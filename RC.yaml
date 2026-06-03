@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mypodsrpc
+spec:
+  minReadySeconds: 5
+  replicas: 4
+  selector:
+      app: my-dev-pod
+  template:
+    metadata:
+      name: myrpcred
+      labels:
+        app: my-dev-pod
+    spec:
+      containers:
+        - name: myown-con
+          image: nginx
+          ports:
+            - containerPort: 80
+
+
